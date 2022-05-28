@@ -32,7 +32,7 @@ export const AddTask = ({
                 .add(7, 'days')
                 .format('DD/MM/YYYY')
         }
-        console.log(task, collatedDate, projectId, )
+        
         return (
             task &&
             projectId &&
@@ -82,6 +82,7 @@ export const AddTask = ({
                             <h2 className="header">
                                 Quick AddTask
                             </h2>
+                            
                         </div> 
                     )}
                     <ProjectOverlay 
@@ -113,26 +114,32 @@ export const AddTask = ({
                     >
                         Add Task
                     </button>
-                    
+                    {(!showQuickAddTask || showQuickAddTask)  && (
                     <button
                             className="add-task__cancel"
                             data-testid="add-task-main-cancel"
                             onClick={() => {
-                                setShowMain(false)
-                                setShowQuickAddTask(false)
+                                if (showQuickAddTask === true) {
+                                    setShowQuickAddTask(false)
+                                }
+                                setShowMain(false);
                                 setShowProjectOverlay(false)
+                                setShowTaskDate(false)
                             }}
-                            onKeyPress={() => {
+                            onKeyDown={() => {
+                                if (showQuickAddTask === true) {
+                                    setShowQuickAddTask(false)
+                                }
                                 setShowMain(false)
-                                setShowQuickAddTask(false)
                                 setShowProjectOverlay(false)
+                                setShowTaskDate(false)
                             }}
                             tabIndex={0}
                             type="button"
                         >
                             Cancel
                         </button>
-                        
+                    )}
                     <span
                         className="add-task__project"
                         data-testid="show-task-project-overlay"

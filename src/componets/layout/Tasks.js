@@ -7,18 +7,19 @@ import { collatedTasks } from '../../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../../helpers'
 import { useSelectedProjectValue, useProjectsValue } from '../../context'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import { FaTrashAlt } from 'react-icons/fa'
 
 
 export const Tasks = () => {
-    const { selectedProject } = useSelectedProjectValue();
+    const { selectedProject, setSelectedProject } = useSelectedProjectValue();
     const { projects } = useProjectsValue();
     const { tasks, setTasks } = useTasks(selectedProject);
     const [updateTasks, setUpdatedTasks] = useState(null);
+    const [active, setActive] = useState(false);
 
     let projectName = '';
 
-    if(projects.length > 0 && selectedProject && !collatedTasksExist(selectedProject)){
+    if(projects && projects.length > 0 && selectedProject && !collatedTasksExist(selectedProject)){
         projectName = getTitle(projects, selectedProject).name;
     }
 
@@ -29,18 +30,32 @@ export const Tasks = () => {
         document.title = `${projectName}: Task Manager`;
     });
     
+    const deleteTask = (id) => {
+        firebase    
+            .firestore()
+            .collection('tasks')
+            .doc(id)
+            .delete()
+            
+    }
 
     useEffect(() => {
         setUpdatedTasks(tasks)  
     }, [tasks ]);
 
     const handleOnDragEnd = (result) => {
+        
         if (!result.destination) return;
         console.log(result);
-        const items = Array.from(updateTasks); 
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-        setUpdatedTasks(items);
+        if (updateTasks) {
+            const items = Array.from(updateTasks); 
+            const [reorderedItem] = items.splice(result.source.index, 1);
+            items.splice(result.destination.index, 0, reorderedItem);
+        
+            setUpdatedTasks(items);
+
+        }
+        
     }
 
     return ( 
@@ -57,8 +72,8 @@ export const Tasks = () => {
                                     {updateTasks &&
                                     updateTasks.map((task, index) => (
                                         <Draggable
-                                            key={task.id}
-                                            draggableId={task.id}
+                                            key={`${task.id}`}
+                                            draggableId={`${task.id}`}
                                             index={index}
                                         >
                                             {(provided) => (
@@ -66,9 +81,24 @@ export const Tasks = () => {
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
                                                     ref={provided.innerRef}
+                                                    // onClick={() => setActive(task.id)}
                                                 >
                                                     <Checkbox id={task.id} />
                                                     <span>{task.task}</span>
+                                                    <span
+                                                        className={
+                                                                    active === task.id
+                                                                    ? 'active tasks__list-delete'
+                                                                    : 'tasks__list-delete'
+                                                                }
+                                                        role="button"
+                                                        onClick={() => {
+                                                            deleteTask(task.id)
+                                                            // setActive(task.id)
+                                                        }}
+                                                    >
+                                                        <FaTrashAlt />
+                                                    </span>
                                                 </li>
                                             )}
                                         </Draggable>
@@ -84,4 +114,7 @@ export const Tasks = () => {
         </div>
     );
 };
+
+
+
 

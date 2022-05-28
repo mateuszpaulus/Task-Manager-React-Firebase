@@ -284,7 +284,6 @@ header {
   }
 }
 
-
 .sidebar {
     @include none-select();
     width: 270px;
@@ -368,7 +367,7 @@ header {
 
   &__middle {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -389,9 +388,9 @@ header {
     h2 {
       margin: 0;
       color: #333;
-      font-size: 15px;
+      font-size: 12px;
       font-weight: bold;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
   }
 
@@ -500,40 +499,60 @@ header {
     margin-top: 20px;
   }
 
-  &__list li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    line-height: 18px;
-    color: #333;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
-    list-style-type: none;
-    border-bottom: 1px solid #f0f0f0;
+  &__list {
+    &-delete {
+        margin-left: auto;
+        display: none;
+        svg {
+          color: #cacaca;
+        }
+      }
 
-    .checkbox-holder {
-      margin-right: 20px;
+    li {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      line-height: 16px;
+      line-height: 18px;
+      color: #333;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 14px;
+      list-style-type: none;
+      border-bottom: 1px solid #f0f0f0;
 
-      .checkbox {
-        cursor: pointer;
-        border-color: gray;
-        color: #343434;
-        height: 16px;
-        width: 16px;
-        display: block;
-        border: 1px solid gray;
-        border-radius: 16px;
+      &:hover .tasks__list-delete {
+          display: block;
+          }
+
+      &.active, &:hover {
+            font-weight: bold;
+            background-color: white;
+          }
+      
+
+      .checkbox-holder {
+        margin-right: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        line-height: 16px;
+
+        .checkbox {
+          cursor: pointer;
+          border-color: gray;
+          color: #343434;
+          height: 16px;
+          width: 16px;
+          display: block;
+          border: 1px solid gray;
+          border-radius: 16px;
+        }
       }
     }
   }
