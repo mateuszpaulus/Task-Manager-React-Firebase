@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Checkbox } from '../Checkbox';
 import { AddTask } from '../AddTask';
 import { useTasks } from '../../hooks/index'
-import { collatedTasks } from '../../constants';
-import { getTitle, getCollatedTitle, collatedTasksExist } from '../../helpers'
-import { useSelectedProjectValue, useProjectsValue } from '../../context'
+import { getTitle, getCollatedTitle, collatedTasksExist, collatedTasks } from '../../helpers'
+import { useProjectsValue } from '../../context/projects-context'
+import { useSelectedProjectValue } from '../../context/selected-project-context'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { FaTrashAlt } from 'react-icons/fa'
-
+import { FaTrashAlt } from 'react-icons/fa';
+import { firebase } from '../../firebase';
 
 export const Tasks = () => {
     const { selectedProject, setSelectedProject } = useSelectedProjectValue();
@@ -72,8 +72,8 @@ export const Tasks = () => {
                                     {updateTasks &&
                                     updateTasks.map((task, index) => (
                                         <Draggable
-                                            key={`${task.id}`}
-                                            draggableId={`${task.id}`}
+                                            key={task.id}
+                                            draggableId={task.id}
                                             index={index}
                                         >
                                             {(provided) => (
@@ -82,6 +82,7 @@ export const Tasks = () => {
                                                     {...provided.dragHandleProps}
                                                     ref={provided.innerRef}
                                                     // onClick={() => setActive(task.id)}
+                                                    
                                                 >
                                                     <Checkbox id={task.id} />
                                                     <span>{task.task}</span>
@@ -94,7 +95,7 @@ export const Tasks = () => {
                                                         role="button"
                                                         onClick={() => {
                                                             deleteTask(task.id)
-                                                            // setActive(task.id)
+                                                            
                                                         }}
                                                     >
                                                         <FaTrashAlt />

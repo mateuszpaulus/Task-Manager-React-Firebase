@@ -1,4 +1,8 @@
-import { collatedTasks } from '../constants/index'
+export const collatedTasks = [
+    {key: 'INPROGRESS', name: 'Inprogress'},
+    {key: 'NOWADAYS', name: 'Nowadays'},
+    {key: 'INCOMING', name: 'Incoming'},
+];
 
 export const getTitle = (projects, projectId) =>
     projects.find(project => project.projectId === projectId);

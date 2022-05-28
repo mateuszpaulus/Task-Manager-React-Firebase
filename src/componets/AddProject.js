@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import  { firebaseApp }  from '../firebase';
 import  { firebase }  from '../firebase';
 import { generatePushId } from "../helpers";
-import { useProjectsValue } from "../context";
+import { useProjectsValue } from "../context/projects-context";
 
 
 export const AddProject = ({shouldShow = false}) => {

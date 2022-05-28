@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import { FaMoon } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa';
-import { FaBars } from 'react-icons/fa';
+import { FaMoon, FaPlus, FaBars } from 'react-icons/fa';
 import { AddTask } from "../AddTask";
-import { useProjectsValue, useSelectedProjectValue } from '../../context/index';
+import { useProjectsValue } from '../../context/projects-context';
+import { useSelectedProjectValue } from '../../context/selected-project-context';
 
 export const Header = () => {
     
