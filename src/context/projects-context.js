@@ -1,26 +1,37 @@
-import React, { createContext, useContext, useState } from "react";
-import { useProjects } from '../hooks/index'
-
+import React, { createContext, useContext, useState } from 'react';
+import { useProjects } from '../hooks/index';
+import PropTypes from 'prop-types';
 
 export const ProjectsContext = createContext();
 export const ProjectsProvider = ({ children }) => {
-    const { projects, setProjects } = useProjects();
-    const [showSidebar, setShowSidebar] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
-    return(
-        <ProjectsContext.Provider 
-            value={{ 
-                projects, 
-                setProjects, 
-                showSidebar, 
-                setShowSidebar,
-                darkMode,
-                setDarkMode,
-            }}
-        >
-            {children}
-        </ProjectsContext.Provider>
-    )
-}
+  const { projects, setProjects } = useProjects();
 
-export const useProjectsValue = () => useContext(ProjectsContext);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [selectedProject, setSelectedProject] = useState('FORTODAY');
+  const [activeProject, setActiveProject] = useState('fortoday');
+  const [darkMode, setDarkMode] = useState(false);
+
+  return (
+    <ProjectsContext.Provider
+      value={{
+        projects,
+        setProjects,
+        showSidebar,
+        setShowSidebar,
+        selectedProject,
+        setSelectedProject,
+        activeProject,
+        setActiveProject,
+        darkMode,
+        setDarkMode
+      }}>
+      {children}
+    </ProjectsContext.Provider>
+  );
+};
+
+export const useProjectsContext = () => useContext(ProjectsContext);
+
+ProjectsProvider.propTypes = {
+  children: PropTypes.node.isRequired
+};

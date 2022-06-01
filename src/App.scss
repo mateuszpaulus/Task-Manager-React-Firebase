@@ -1,17 +1,17 @@
 // General Settings
 
 *, *:before, *:after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 body {
-    line-height: 1;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #202020;
-    background-color: #fafafa;
-    font-size: 1rem;
+  line-height: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #202020;
+  background-color: #fafafa;
+  font-size: 1rem;
 }
 
 
@@ -21,109 +21,110 @@ $base-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px 1px;
 $base-border: 1px solid #e7e7e7;
 $base-bg: #666;
 $base-bg-2: #282828;
+$base-bg-3:#fafafa;
 
 /* Mixin
   ============================================ */
 @mixin box-overlay() {
-    -webkit-box-shadow: $base-box-shadow;
-    box-shadow: $base-box-shadow;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    top: 80px;
-    border-radius: 5px;
+  -webkit-box-shadow: $base-box-shadow;
+  box-shadow: $base-box-shadow;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 80px;
+  border-radius: 5px;
 }
 @mixin flex-align($flex-align: center) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 
-    @if $flex-align != center {
-        -webkit-box-pack: left;
-        -ms-flex-pack: left;
-        justify-content: left;
-    } @else {
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
+  @if $flex-align != center {
+    -webkit-box-pack: left;
+    -ms-flex-pack: left;
+    justify-content: left;
+  } @else {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
 }
 
 @mixin none-select {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @mixin btn($width) {
-    width: $width;
-    background-color: $base-bg;
-    color: #fff !important;
-    border: 1px solid transparent;
-    margin-right: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 13px !important;
-    line-height: 17px;
-    padding: 6px 12px 7px 12px;
-    // position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    border-radius: 3px !important;
-    text-decoration: none !important;
-    text-align: center;
-    cursor: pointer;
+  width: $width;
+  background-color: $base-bg;
+  color: #fff !important;
+  border: 1px solid transparent;
+  margin-right: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px !important;
+  line-height: 17px;
+  padding: 6px 12px 7px 12px;
+  // position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer;
 }
 
 @mixin cancel($width) {
-    width: $width;
-    background-color: $base-bg;
-    color: #fff !important;
-    border: 1px solid transparent;
-    margin-right: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 13px !important;
-    line-height: 17px;
-    padding: 6px 12px 7px 12px;
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    border-radius: 3px !important;
-    text-decoration: none !important;
-    text-align: center;
-    cursor: pointer;
+  width: $width;
+  background-color: $base-bg;
+  color: #fff !important;
+  border: 1px solid transparent;
+  margin-right: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px !important;
+  line-height: 17px;
+  padding: 6px 12px 7px 12px;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer;
     
 }
 
 @mixin transparent-button() {
-    background-color: transparent;
-    border: 0;
+  background-color: transparent;
+  border: 0;
 }
 
 @mixin task-item() {
-    list-style-type: none;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    line-height: 18px;
-    color: #333;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
-    list-style-type: none;
-    border-bottom: 1px solid #f0f0f0;
-    padding-left: 10px;
-    cursor: pointer;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 18px;
+  color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  list-style-type: none;
+  border-bottom: 1px solid #f0f0f0;
+  padding-left: 10px;
+  cursor: pointer;
 
-    &:hover {
-        background-color: #f9f9f9;
-    }
+  &:hover {
+    background-color: #f9f9f9;
+  }
 }
 
 @mixin mq($from) {
@@ -135,91 +136,148 @@ $base-bg-2: #282828;
 /* Darkmode
   ============================================ */
 .darkmode {
+
+  .sidebar {
     -webkit-box-shadow: $base-box-shadow;
     box-shadow: $base-box-shadow;
     background-color: $base-bg-2;
-    border-color: transparent;
+    border-right:1px solid $base-bg;
+    li {
+      color: $base-bg-3;
+      &.active, &:hover {
+      background-color:$base-bg;
+      }
+    }
+    &__middle {
+      border-bottom: 1px solid $base-bg;
+      span {
+        color: $base-bg-3;
+      }
+      h2 {
+        color: $base-bg-3;
+      }
+    }
+  }
+  .project-delete-modal {
+    color: $base-bg-3;
+    
+    &__inner{
+      border: 1px solid $base-bg;
+      background-color: $base-bg-2;
+    }
+
+  }
+  .tasks{
+    -webkit-box-shadow: $base-box-shadow;
+    box-shadow: $base-box-shadow;
+    background-color: $base-bg-2;
+    &__list-input, .active{
+      color: $base-bg-3;
+    }
+    li, h2 {
+      color: $base-bg-3;
+    }
+  }
+  
+  .add-task{
+    &__overlay {
+      .add-task__main {
+        background-color: $base-bg-2;
+      }
+    }
+  }
+  .project-overlay {
+    background-color: $base-bg-2;
+    border: 1px solid $base-bg;
+    &__list li :hover {
+      background-color: $base-bg;
+
+    }
+  }
+  .task-date {
+    background-color: $base-bg-2;
+    border: 1px solid $base-bg;
+    &__list li :hover {
+      background-color: $base-bg;
+    }
+  }
 }
 
 /* Header
   ============================================ */
 header {
-    background-color: $base-bg;
-    -webkit-transition: height 100ms ease-in;
-    transition: height 100ms ease-in;
-    -webkit-box-shadow: $base-box-shadow;
-    box-shadow: $base-box-shadow;
+  background-color: $base-bg;
+  -webkit-transition: height 100ms ease-in;
+  transition: height 100ms ease-in;
+  -webkit-box-shadow: $base-box-shadow;
+  box-shadow: $base-box-shadow;
+  height: 44px;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 25px;
+
+  nav {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: space-between;
     height: 44px;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 0 25px;
+    
+    div {
+      &.navbar {
+        ul li {
+            @include flex-align();
 
-    nav {
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        justify-content: space-between;
-        height: 44px;
-        
-        div {
-            &.navbar {
-                ul li {
-                    @include flex-align();
+            list-style-type: none;   
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
 
-                    list-style-type: none;   
-                    float: left;
-                    width: 30px;
-                    height: 30px;
-                    text-align: center;
-                    vertical-align: middle;
+            &:hover {
+                border-radius: 3px;
+                background-color: rgba(255,255,255,0.2);
+            }
 
-                    &:hover {
-                        border-radius: 3px;
-                        background-color: rgba(255,255,255,0.2);
-                    }
+            &.navbar__toggle {
+                margin-right: 15px;
+                display: flex;
 
-                    &.navbar__toggle {
-                        margin-right: 15px;
-                        display: none;
+                button {
+                    @include transparent-button();
+                    color: white;
+                    cursor: pointer;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
 
-                        @include mq(750px) {
-                          display: flex;
-                        }
-
-                        button {
-                            @include transparent-button();
-                            color: white;
-                            cursor: pointer;
-                            display: -webkit-box;
-                            display: -ms-flexbox;
-
-                            svg {
-                                width: 20px;
-                                height: 20px;
-                            }
-                        }
-                    }
-
-                    &.navbar__logo {
-
-                        button {
-                            @include transparent-button();
-                            color: white;
-                            cursor: pointer;
-                            display: -webkit-box;
-                            display: -ms-flexbox;
-
-                            img {
-                                width: 22px;
-                                height: 22px;
-                            }
-                        }
+                    svg {
+                        width: 20px;
+                        height: 20px;
                     }
                 }
             }
+
+          &.navbar__logo {
+
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+              display: -webkit-box;
+              display: -ms-flexbox;
+
+              img {
+                width: 22px;
+                height: 22px;
+              }
+            }
+          }
+        }
+      }
 
             &.settings {
 
@@ -275,15 +333,6 @@ header {
 
 /* Sidebar
   ============================================ */
-@include mq(750px) {
-  .sidebar {
-    transform: translate(-100%);
-  }
-  .sidebar__show {
-    transform: translate(0);
-  }
-}
-
 .sidebar {
     @include none-select();
     width: 270px;
@@ -291,11 +340,21 @@ header {
     padding-top: 70px;
     padding-left: 20px;
     position: fixed;
+    overflow-x: hidden;
+    overflow-y: hidden;
     border-right: $base-border;
-    background-color: #fafafa;
+    background-color: $base-bg-3;
     -webkit-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in;
     z-index: 1;
+    transform: translate(0);
+
+    &__show {
+      @include mq(750px) {
+        transform: translate(-100%);
+      }
+      transform: translate(-100%);
+    }
 
     li {
         padding-left: 10px;
@@ -354,10 +413,12 @@ header {
 
   &__projects {
     padding-left: 3px;
+    
   }
 
   &__project {
     @include flex-align('left');
+    border-radius: 3px;
   }
 
   &__dot {
@@ -434,6 +495,7 @@ header {
       &.active, &:hover {
         font-weight: bold;
         background-color: white;
+        border-radius: 3px;
       }
     }
   
@@ -446,7 +508,7 @@ header {
 
   &__inner {
     @include box-overlay();
-    z-index: 99;
+    z-index: 2;
     width: 200px;
     padding: 10px;
     top: 10px;
@@ -481,10 +543,12 @@ header {
   vertical-align: top;
   padding: 80px 40px 84px 40px;
   align-items: center;
-  justify-content: center;
-
 
   @include mq(750px) {
+    margin-left: 0;
+    width: auto;
+  }
+  &__show {
     margin-left: 0;
     width: auto;
   }
@@ -501,13 +565,32 @@ header {
 
   &__list {
     &-delete {
-        margin-left: auto;
-        display: none;
-        svg {
-          color: #cacaca;
-        }
-      }
+      margin-left: 10px;
+      display: none;
+      padding: 5px;
 
+      svg {
+        color: #cacaca;
+      }
+    }
+    &-edit {
+      margin-left: auto;
+      display: none;
+      padding: 5px;
+
+      svg {
+        color: #cacaca;
+      }
+    }
+
+    &-input, .active {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      width: 80%;
+      font-weight: bold;
+    }
     li {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -519,16 +602,20 @@ header {
       font-size: 14px;
       list-style-type: none;
       border-bottom: 1px solid #f0f0f0;
+      align-items: center;
 
       &:hover .tasks__list-delete {
-          display: block;
-          }
-
-      &.active, &:hover {
-            font-weight: bold;
-            background-color: white;
-          }
-      
+        display:flex;
+      }
+      &:hover .tasks__list-edit {
+        display:flex;
+        
+      } 
+    }
+      button {
+        @include transparent-button();
+        cursor: pointer;
+      }
 
       .checkbox-holder {
         margin-right: 20px;
@@ -553,7 +640,7 @@ header {
           border: 1px solid gray;
           border-radius: 16px;
         }
-      }
+      
     }
   }
 }
@@ -564,7 +651,6 @@ header {
   &__overlay {
     background: rgba(102,102,102,0.5);
     position: absolute;
-    // margin: auto;
     top: 0;
     left: 0;
     width: 100%;
@@ -612,9 +698,7 @@ header {
 
   &__project {
     margin-right: 0;
-    
   }
-  
 
   &__content {
     width: 100%;
@@ -636,6 +720,7 @@ header {
   @include none-select;
   cursor: pointer;
   margin-bottom: 20px;
+  padding: 5px;
 }
 
 .add-task__plus, .add-project__plus {
@@ -711,8 +796,12 @@ header {
 .add-project {
   padding-left: 13px;
   padding-right: 20px;
-  margin-top: 20px;
+  // padding:15px 20px 15px 13px;
+  margin-top: 10px;
 
+  &__field {
+    padding: 3px;
+  }
   &__input {
     margin-bottom: 20px;
   }
