@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { FaRegListAlt, FaRegCalendarAlt } from 'react-icons/fa';
-// import PropTypes from 'prop-types';
 import moment from 'moment';
-// import { format } from 'date-fns';
 import { firebase } from '../firebase';
 import { AddProjectToTask } from './AddProjectToTask';
 import { AddDateToTask } from './AddDateToTask';
@@ -31,7 +29,7 @@ export const AddTask = () => {
     } else if (projectId === 'ONLYWEEK') {
       dateAdded = moment().add(7, 'days').format('DD/MM/YYYY');
     } else if (projectId === 'THISMONTH') {
-      dateAdded = moment().add(31, 'days').format('DD/MM/YYYY');
+      dateAdded = moment().add(1, 'months').format('DD/MM/YYYY');
     }
 
     return (

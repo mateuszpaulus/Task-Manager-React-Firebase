@@ -72,7 +72,6 @@ export const useProjects = () => {
           docId: project.id
         }));
 
-        // zeby nie bylo nieskonczonego odswiezania re-render loop
         if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
         }
