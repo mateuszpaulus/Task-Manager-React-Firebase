@@ -23,29 +23,33 @@ export const SingleProject = ({ project }) => {
   return (
     <>
       <span className="sidebar__dot">•</span>
-      <span className="sidebar__project-name">{project.name}</span>
+      <span>{project.name}</span>
       <span
         className="sidebar__project-delete"
         data-testid="delete-project"
         onClick={() => setShowConfirm(!showConfirm)}
-        onKeyDown={() => setShowConfirm(!showConfirm)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') setShowConfirm(!showConfirm);
+        }}
         tabIndex={0}
         role="button">
         <FaTrashAlt />
         {showConfirm && (
-          <div className="project-delete-modal">
-            <div className="project-delete-modal__inner">
+          <div className="project-delete-icon">
+            <div className="project-delete-icon__confirmation">
               <p>Are you sure you want delete this project?</p>
               <button type="button" onClick={() => deleteProject(project.docId)}>
                 Delete
               </button>
-              <span
+              <button
                 onClick={() => setShowConfirm(!showConfirm)}
-                onKeyDown={() => setShowConfirm(!showConfirm)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') setShowConfirm(!showConfirm);
+                }}
                 tabIndex={0}
-                role="button">
+                type="button">
                 Cancel
-              </span>
+              </button>
             </div>
           </div>
         )}

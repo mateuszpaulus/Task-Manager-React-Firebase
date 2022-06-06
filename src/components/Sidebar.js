@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { FaChevronDown, FaRegCalendarAlt, FaRegCalendarTimes, FaRegCalendar } from 'react-icons/fa';
+import {
+  FaChevronDown,
+  FaRegCalendarAlt,
+  FaRegCalendarTimes,
+  FaRegCalendar,
+  FaCalendarWeek
+} from 'react-icons/fa';
 import { ProjectsList } from './ProjectsList';
 import { AddProject } from './AddProject';
 import { useProjectsContext } from '../context/projects-context';
@@ -10,12 +16,12 @@ export const Sidebar = () => {
 
   return (
     <div className={showSidebar ? 'sidebar sidebar__show' : 'sidebar'} data-testid="sidebar">
-      <ul className="sidebar__generic">
+      <ul className="sidebar__main">
         <li
           data-testid="inprogress"
           className={activeProject === 'inprogress' ? 'active ' : undefined}>
           <div
-            data-testid="inbox-click"
+            data-testid="inprogress-onclick"
             role="button"
             tabIndex={0}
             onClick={() => {
@@ -34,9 +40,9 @@ export const Sidebar = () => {
             <span>InProgress</span>
           </div>
         </li>
-        <li data-testid="nowadays" className={activeProject === 'fortoday' ? 'active ' : undefined}>
+        <li data-testid="fortoday" className={activeProject === 'fortoday' ? 'active ' : undefined}>
           <div
-            data-testid="fortoday-click"
+            data-testid="fortoday-onclick"
             role="button"
             tabIndex={0}
             onClick={() => {
@@ -57,7 +63,7 @@ export const Sidebar = () => {
         </li>
         <li data-testid="onlyweek" className={activeProject === 'onlyweek' ? 'active ' : undefined}>
           <div
-            data-testid="incoming-click"
+            data-testid="onlyweek-onclick"
             role="button"
             tabIndex={0}
             onClick={() => {
@@ -76,9 +82,32 @@ export const Sidebar = () => {
             <span>OnlyWeek</span>
           </div>
         </li>
+        <li
+          data-testid="thismonth"
+          className={activeProject === 'thismonth' ? 'active ' : undefined}>
+          <div
+            data-testid="thismonth-onclick"
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              setActiveProject('thismonth');
+              setSelectedProject('THISMONTH');
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setActiveProject('thismonth');
+                setSelectedProject('THISMONTH');
+              }
+            }}>
+            <span>
+              <FaCalendarWeek />
+            </span>
+            <span>ThisMonth</span>
+          </div>
+        </li>
       </ul>
       <div
-        className="sidebar__middle"
+        className="sidebar__projects"
         onClick={() => setShowProjectsList(!showProjectsList)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') setShowProjectsList(!showProjectsList);
@@ -91,7 +120,7 @@ export const Sidebar = () => {
         <h2>Projects</h2>
       </div>
 
-      <ul className="sidebar__projects">{showProjectsList && <ProjectsList />}</ul>
+      <ul className="sidebar__projects-list">{showProjectsList && <ProjectsList />}</ul>
 
       {showProjectsList && <AddProject />}
     </div>

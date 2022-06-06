@@ -34,7 +34,6 @@ export const TasksList = () => {
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
-    console.log(result);
     const items = Array.from(updatedTasks);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
@@ -42,8 +41,8 @@ export const TasksList = () => {
   };
 
   return (
-    <div className={showSidebar ? 'tasks tasks__show' : 'tasks'} data-testid="tasks">
-      <h2 data-testid="project-name">{projectTitle}</h2>
+    <div className={showSidebar ? 'tasks tasks__show' : 'tasks'} data-testid="tasks-test">
+      <h2 data-testid="project-name-test">{projectTitle}</h2>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="tasks">
           {(provided) => (

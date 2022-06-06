@@ -1,7 +1,8 @@
 export const mainProjects = [
   { key: 'INPROGRESS', name: 'InProgress' },
   { key: 'FORTODAY', name: 'ForToday' },
-  { key: 'ONLYWEEK', name: 'OnlyWeek' }
+  { key: 'ONLYWEEK', name: 'OnlyWeek' },
+  { key: 'THISMONTH', name: 'ThisMonth' }
 ];
 
 export const getProjectTitle = (projects, projectId) =>

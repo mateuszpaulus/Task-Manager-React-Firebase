@@ -29,14 +29,14 @@ export const AddProject = () => {
       });
 
   return (
-    <div className="add-project" data-testid="add-project">
+    <div className="add-project" data-testid="add-project-test">
       {showAddProject && (
-        <div className="add-project__input" data-testid="add-project-inner">
+        <div className="add-project__confirmation" data-testid="add-project-confirmation">
           <input
             value={projectTitle}
             onChange={(e) => setProjectTitle(e.target.value)}
-            className="add-project__name"
-            data-testid="project-name"
+            className="add-project__title"
+            data-testid="add-project-title"
             type="text"
             placeholder="Name your projct"
           />
@@ -47,21 +47,21 @@ export const AddProject = () => {
             data-testid="add-project-submit">
             Add Project
           </button>
-          <span
-            data-testid="hide-project-overlay"
+          <button
+            data-testid="add-project__cancel"
             className="add-project__cancel"
             onClick={() => setShowAddProject(false)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') setShowAddProject(false);
             }}
-            role="button"
+            type="button"
             tabIndex={0}>
             Cancel
-          </span>
+          </button>
         </div>
       )}
       <div
-        className="add-project__field"
+        className="add-project__onclick"
         data-testid="add-project-action"
         onClick={() => setShowAddProject(!showAddProject)}
         onKeyDown={() => setShowAddProject(!showAddProject)}

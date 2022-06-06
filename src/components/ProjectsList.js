@@ -11,7 +11,7 @@ export const ProjectsList = () => {
       <li
         key={project.projectId}
         data-doc-id={project.docId}
-        data-testid="project-action"
+        data-testid="project-single-test"
         className={
           activeProject === project.projectId ? 'active sidebar__project' : 'sidebar__project'
         }
@@ -21,9 +21,11 @@ export const ProjectsList = () => {
           setActiveProject(project.projectId);
           setSelectedProject(project.projectId);
         }}
-        onKeyDown={() => {
-          setActiveProject(project.projectId);
-          setSelectedProject(project.projectId);
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            setActiveProject(project.projectId);
+            setSelectedProject(project.projectId);
+          }
         }}>
         <SingleProject project={project} />
       </li>

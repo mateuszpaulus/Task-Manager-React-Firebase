@@ -4,29 +4,27 @@ import PropTypes from 'prop-types';
 import { useProjectsContext } from '../context/projects-context';
 import { useTasksContext } from '../context/tasks-context';
 
-export const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectOverlay }) => {
+export const AddProjectToTask = ({ setProject, showProject, setShowProject }) => {
   const { projects } = useProjectsContext();
   const { showQuickAddTask } = useTasksContext();
 
   return (
     projects &&
-    showProjectOverlay && (
+    showProject && (
       <div
-        className={
-          showQuickAddTask === true ? 'project-overlay project-overlay__quick' : 'project-overlay'
-        }
-        data-testid="project-overlay">
-        <ul className="project-overlay__list">
+        className={showQuickAddTask ? 'project-totask project-totask__quick' : 'project-totask'}
+        data-testid="project-totask-test">
+        <ul className="project-totask__list">
           {projects.map((project) => (
-            <li key={project.projectId} data-testid="project-overlay-action">
+            <li key={project.projectId} data-testid="project-totask-list">
               <div
                 onClick={() => {
                   setProject(project.projectId);
-                  setShowProjectOverlay(false);
+                  setShowProject(false);
                 }}
                 onKeyDown={() => {
                   setProject(project.projectId);
-                  setShowProjectOverlay(false);
+                  setShowProject(false);
                 }}
                 role="button"
                 tabIndex={0}>
@@ -40,8 +38,8 @@ export const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectO
   );
 };
 
-ProjectOverlay.propTypes = {
+AddProjectToTask.propTypes = {
   setProject: PropTypes.func.isRequired,
-  showProjectOverlay: PropTypes.bool.isRequired,
-  setShowProjectOverlay: PropTypes.func.isRequired
+  showProject: PropTypes.bool.isRequired,
+  setShowProject: PropTypes.func.isRequired
 };

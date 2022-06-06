@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
-// import { format } from 'date-fns';
 import { firebase } from '../firebase';
 import { constantsProjects } from '../constants/constants';
 
-// no props its regular function = secectedproject
 export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
@@ -31,12 +29,22 @@ export const useTasks = (selectedProject) => {
       }));
 
       setTasks(
-        selectedProject === 'INCOMING'
-          ? newTasks.filter(
-              (task) =>
+        selectedProject === 'ONLYWEEK'
+          ? newTasks.filter((task) => {
+              return (
                 moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') >= 1 &&
                 task.archived !== true
-            )
+              );
+            })
+          : selectedProject === 'THISMONTH'
+          ? newTasks.filter((task) => {
+              return (
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'months') <= 1 &&
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') >= 7 &&
+                task.archived !== true
+              );
+            })
           : newTasks.filter((task) => task.archived !== true)
       );
       setArchivedTasks(newTasks.filter((task) => task.archived !== false));

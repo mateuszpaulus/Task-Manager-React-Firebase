@@ -18,11 +18,11 @@ export const Header = () => {
   return (
     <header data-testid="header" className="header">
       <nav>
-        <div className="navbar">
+        <div className="set">
           <ul>
-            <li className="navbar__toggle">
+            <li className="set__sidebar">
               <button
-                data-testid="navbar-toggle"
+                data-testid="set-sidebar"
                 type="button"
                 onClick={() => {
                   setShowSidebar(!showSidebar);
@@ -30,22 +30,22 @@ export const Header = () => {
                 <FaBars />
               </button>
             </li>
-            <li className="navbar__logo">
+            <li className="set__logo">
               <button
-                data-testid="navbar-logo"
+                data-testid="set-logo"
                 type="button"
                 onClick={() => {
-                  setActiveProject('nowadays');
-                  setSelectedProject('NOWADAYS');
+                  setActiveProject('fortoday');
+                  setSelectedProject('FORTODAY');
                 }}>
                 <img src="./images/logo.png" alt="Task manager" />
               </button>
             </li>
           </ul>
         </div>
-        <div className="settings">
+        <div className="add">
           <ul>
-            <li className="settings__add">
+            <li className="add__tasks">
               <button
                 data-testid="quick-add-tasks"
                 type="button"
@@ -56,7 +56,7 @@ export const Header = () => {
                 <FaPlus />
               </button>
             </li>
-            <li className="settings__darkmode ">
+            <li className="add__darkmode ">
               <button
                 data-testid="dark-mode"
                 type="button"
