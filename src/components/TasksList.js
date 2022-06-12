@@ -10,6 +10,7 @@ import {
 import { useProjectsContext } from '../context/projects-context';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { SingleTask } from './SingleTask';
+// import { firebase } from '../firebase';
 
 export const TasksList = () => {
   const { projects, selectedProject, showSidebar } = useProjectsContext();
@@ -42,7 +43,7 @@ export const TasksList = () => {
 
   return (
     <div className={showSidebar ? 'tasks tasks__show' : 'tasks'} data-testid="tasks-test">
-      <h2 data-testid="project-name-test">{projectTitle}</h2>
+      <h2 data-testid="project-name">{projectTitle}</h2>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="tasks">
           {(provided) => (

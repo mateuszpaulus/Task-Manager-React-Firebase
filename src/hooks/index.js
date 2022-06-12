@@ -16,10 +16,8 @@ export const useTasks = (selectedProject) => {
     unsubscribe =
       selectedProject && !constantsProjects(selectedProject)
         ? (unsubscribe = unsubscribe.where('projectId', '==', selectedProject))
-        : selectedProject === 'FORTODAY'
-        ? (unsubscribe = unsubscribe.where('date', '==', moment().format('DD/MM/YYYY')))
         : selectedProject === 'INPROGRESS' || selectedProject === 0
-        ? (unsubscribe = unsubscribe.where('date', '==', ''))
+        ? (unsubscribe = unsubscribe.where('date', '==', moment().format('DD/MM/YYYY')))
         : unsubscribe;
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {
@@ -29,19 +27,27 @@ export const useTasks = (selectedProject) => {
       }));
 
       setTasks(
-        selectedProject === 'ONLYWEEK'
+        selectedProject === 'TOMORROW'
+          ? newTasks.filter((task) => {
+              return (
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 2 &&
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'day') >= 1 &&
+                task.archived !== true
+              );
+            })
+          : selectedProject === 'ONLYWEEK'
           ? newTasks.filter((task) => {
               return (
                 moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
-                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') >= 1 &&
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') > 2 &&
                 task.archived !== true
               );
             })
           : selectedProject === 'THISMONTH'
           ? newTasks.filter((task) => {
               return (
-                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'months') <= 1 &&
-                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') >= 7 &&
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'month') <= 1 &&
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') > 7 &&
                 task.archived !== true
               );
             })

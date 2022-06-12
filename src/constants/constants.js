@@ -1,6 +1,6 @@
 export const mainProjects = [
   { key: 'INPROGRESS', name: 'InProgress' },
-  { key: 'FORTODAY', name: 'ForToday' },
+  { key: 'TOMORROW', name: 'Tomorrow' },
   { key: 'ONLYWEEK', name: 'OnlyWeek' },
   { key: 'THISMONTH', name: 'ThisMonth' }
 ];

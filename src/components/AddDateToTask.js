@@ -38,33 +38,33 @@ export const AddDateToTask = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             <div
               onClick={() => {
                 setShowTaskDate(false);
-                setTaskDate(moment().format('DD/MM/YYYY'));
+                setTaskDate(moment().add(2, 'days').format('DD/MM/YYYY'));
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   setShowTaskDate(false);
-                  setTaskDate(moment().format('DD/MM/YYYY'));
+                  setTaskDate(moment().add(2, 'days').format('DD/MM/YYYY'));
                 }
               }}
               tabIndex={0}
               role="button"
-              data-testid="add-date-fortoday">
+              data-testid="add-date-tomorrow">
               <span>
                 <FaRegHourglass />
               </span>
-              <span>ForToday</span>
+              <span>Tomorrow</span>
             </div>
           </li>
           <li>
             <div
               onClick={() => {
                 setShowTaskDate(false);
-                setTaskDate(moment().add(7, 'day').format('DD/MM/YYYY'));
+                setTaskDate(moment().add(7, 'days').format('DD/MM/YYYY'));
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   setShowTaskDate(false);
-                  setTaskDate(moment().add(7, 'day').format('DD/MM/YYYY'));
+                  setTaskDate(moment().add(7, 'days').format('DD/MM/YYYY'));
                 }
               }}
               role="button"

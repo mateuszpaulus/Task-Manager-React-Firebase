@@ -24,12 +24,14 @@ export const AddTask = () => {
     const projectId = project || selectedProject;
     let dateAdded = '';
 
-    if (projectId === 'FORTODAY') {
+    if (projectId === 'INPROGRESS') {
       dateAdded = moment().format('DD/MM/YYYY');
+    } else if (projectId === 'TOMORROW') {
+      dateAdded = moment().add(2, 'days').format('DD/MM/YYYY');
     } else if (projectId === 'ONLYWEEK') {
       dateAdded = moment().add(7, 'days').format('DD/MM/YYYY');
     } else if (projectId === 'THISMONTH') {
-      dateAdded = moment().add(1, 'months').format('DD/MM/YYYY');
+      dateAdded = moment().add(1, 'month').format('DD/MM/YYYY');
     }
 
     return (
@@ -42,7 +44,7 @@ export const AddTask = () => {
           archived: false,
           projectId,
           title,
-          date: dateAdded || taskDate,
+          date: taskDate || dateAdded,
           userId: '048ByaC97FbY5CQ47',
           taskId
         })

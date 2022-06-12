@@ -35,8 +35,8 @@ export const Header = () => {
                 data-testid="set-logo"
                 type="button"
                 onClick={() => {
-                  setActiveProject('fortoday');
-                  setSelectedProject('FORTODAY');
+                  setActiveProject('inprogress');
+                  setSelectedProject('INPROGRESS');
                 }}>
                 <img src="./images/logo.png" alt="Task manager" />
               </button>

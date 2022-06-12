@@ -7,8 +7,8 @@ export const ProjectsProvider = ({ children }) => {
   const { projects, setProjects } = useProjects();
 
   const [showSidebar, setShowSidebar] = useState(false);
-  const [selectedProject, setSelectedProject] = useState('FORTODAY');
-  const [activeProject, setActiveProject] = useState('fortoday');
+  const [selectedProject, setSelectedProject] = useState('INPROGRESS');
+  const [activeProject, setActiveProject] = useState('inprogress');
   const [darkMode, setDarkMode] = useState(false);
 
   return (

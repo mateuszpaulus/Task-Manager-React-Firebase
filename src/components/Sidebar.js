@@ -40,25 +40,25 @@ export const Sidebar = () => {
             <span>InProgress</span>
           </div>
         </li>
-        <li data-testid="fortoday" className={activeProject === 'fortoday' ? 'active ' : undefined}>
+        <li data-testid="tomorrow" className={activeProject === 'tomorrow' ? 'active ' : undefined}>
           <div
-            data-testid="fortoday-onclick"
+            data-testid="tomorrow-onclick"
             role="button"
             tabIndex={0}
             onClick={() => {
-              setActiveProject('fortoday');
-              setSelectedProject('FORTODAY');
+              setActiveProject('tomorrow');
+              setSelectedProject('TOMORROW');
             }}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                setActiveProject('ForToday');
-                setSelectedProject('FORTODAY');
+                setActiveProject('tomorrow');
+                setSelectedProject('TOMORROW');
               }
             }}>
             <span>
               <FaRegCalendarTimes />
             </span>
-            <span>ForToday</span>
+            <span>Tomorrow</span>
           </div>
         </li>
         <li data-testid="onlyweek" className={activeProject === 'onlyweek' ? 'active ' : undefined}>
