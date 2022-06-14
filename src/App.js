@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <ProjectsProvider>
       <TasksProvider>
-        <main data-testid="app">
+        <main data-testid="app-test">
           <Header />
           <Content />
         </main>

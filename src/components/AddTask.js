@@ -61,7 +61,7 @@ export const AddTask = () => {
   return (
     <div
       className={showQuickAddTask ? 'add-task add-task__confirmation' : 'add-task'}
-      data-testid="add-task-comp">
+      data-testid="add-task-confirmation">
       <div
         className="add-task__main"
         data-testid="show-add-task-main"

@@ -6,7 +6,7 @@ import { useProjectsContext } from '../../context/projects-context';
 export const Content = () => {
   const { darkMode } = useProjectsContext();
   return (
-    <section className={darkMode ? 'darkmode' : undefined}>
+    <section className={darkMode ? 'darkmode' : undefined} data-testid="content-test">
       <Sidebar />
       <TasksList />
     </section>
