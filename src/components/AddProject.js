@@ -38,7 +38,7 @@ export const AddProject = () => {
             className="add-project__title"
             data-testid="add-project-title"
             type="text"
-            placeholder="Name your projct"
+            placeholder="Name your project"
           />
           <button
             className="add-project__submit"
